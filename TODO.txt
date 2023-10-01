@@ -1,0 +1,62 @@
+DWDebugMachine2
+
+	
+TODO: 
+	
+- use a compute with getpaintdc to draw pictures matching dw line. (control_type + nested level)	
+- use docking capabilities ?
+- review color theme ? (more blue ;-)
+- incorporer un interpreteur lua pour bricoller vite fait des données via un mapping des describe/modify?
+
+- use pictures from ngs-blog/pblistitems project !
+- allow V2 to compile to 64bits : a pure 100% native pbclassic app : 
+	-> almost -> scilexer
+	-> must publish LexDWExpr.DLL source code <- new post ->
+- fix Powerfilter hyperlink (it may have been relocated to something related to Novalys)
+	-> let's download the demo version using HttpClient ?
+
+GUI refactoring to exploit docking system + theme
+- add to the demo the ability to load additionnal PBD/PBL and to search for dataobject
+- add to the demo the ability to open an .srd file
+- add the ability to connect a DB profile (look at PB registry ? + let's configure manualy)
+- allow attributes multi select to bulk "Describe" them -> a spy/watch list window ()with a refresh button)
+-> review uo_genidwdm_band... to make it really extendable (via a plugin subsystem)
+--> create an article on how to implement a simple plugin system in powerbuilder
+--> tags: plugins, addins, addons, extensions, greffons(francais?)
+--> make it "magic" or based on configuration(database/ini file) the enable/disable extensions
+- add "regex" search/replace in Console via an extension that use pbniregex
+
+- extract real functions names from pbdwe190.dll (offest: 0x032DBA8 (in file), 0x109DF3A8 (IDA))
+	-> dwInfoFunctions is the base exported function
+
+Write a more global Powerbuilder Big toolbox with almost all my usefull tools:
+- embedding perl
+- pbsi
+> on peut imaginer un script qui met tout les controls en movable/resizable [on/off]
+> appliquer un script qui change l'aspect des background de bandes, control column, compute et text.
+- PBPicture Quick Selector
+--> use an API to extend DWDebugmachine by running scripts that can interracts with the DW (describe, modify, insertrow, deleterow, rowcount)
+- debugmachine
+- fastfunct?
+- + powerfilter if available
+- pbni: regex, list, hash, cw
+--> to allow regex manipulation on datawindow syntax
+- dw4web
+- dw2excel : load a dw syntax and produce a xls/xlsx with all properties 
+	-> with option (storable in a pref file) to filter some properties (eg: .attributes, .objects, .bands, .html* ...)
+	data mode [row, control name, attribute name, attribute value, attribute expr]
+	def mode [control name, attribute name, attribute value, attribute expr]
+
+
+- IDEA: create a Powerbuilder extension to lets Powerbuilder to be a socket Server (HTTP(s), FTP,...),
+	at least in daemon mode so it can put PB to the web again (but for small client charges or with the ability to run multiple app processes)
+	-> it could be PLACK compatible to be nice!
+	-> then build a server-router base API like sinatra/mojolicious,
+		but thinking the PB way (by using events, object-inheritence, overloading)
+	+ topwiz tool to build a service upon this
+	-> or an IIS module such as my WebAppManager to load PBVM !
+
+- IDEA2: write a C/C++ wrapper for the Datawindow component to allow usage from the outside (like DW.Net)
+		 or a PBVM wrapper that make easy to integrate the DW-GUI in host app,
+		 and allowing GlobalFunction wrapper - callback api
+		 
